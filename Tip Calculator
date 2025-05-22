@@ -1,0 +1,11 @@
+# print ("Welcome to the tip calculator!")
+bill = int(input("What was the total bill?"))
+tip = (int(input ("How much tip would you like to give? 10, 12, or 15")) / 100)
+number_of_guests = int(input ("How many people want to split the bill?"))
+Each_person_should_pay = int(round (((bill *  tip + bill) / number_of_guests), 2))
+
+# print("What was the total bill?")
+# print("How much tip would you like to give? 10, 12, or 15")
+# print("How many people want to split the bill?")
+
+print(f"Each person should pay " + str(Each_person_should_pay))
