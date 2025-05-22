@@ -8,4 +8,4 @@ Each_person_should_pay = int(round (((bill *  tip + bill) / number_of_guests), 2
 # print("How much tip would you like to give? 10, 12, or 15")
 # print("How many people want to split the bill?")
 
-print(f"Each person should pay " + str(Each_person_should_pay))
+print(f"Each person should pay {Each_person_should_pay}")
