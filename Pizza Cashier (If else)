@@ -12,20 +12,6 @@ extra_cheese = input("Do you want extra cheese? Y or N: ")
 # Add pepperoni for medium or large pizza = +$3
 # Add extra cheese for any pizza = +$1
 
-print("Welcome to Python Pizza Deliveries!")
-size = input("What size pizza do you want? S, M or L: ")
-
-pepperoni = input("Do you want pepperoni on your pizza? Y or N: ")
-
-extra_cheese = input("Do you want extra cheese? Y or N: ")
-
-#Small Pizza: $15
-#Medium Pizza: $20
-# Large Pizza: $25
-# Add pepperoni for small pizza = +$2
-# Add pepperoni for medium or large pizza = +$3
-# Add extra cheese for any pizza = +$1
-
 bill = 0
 if size == "S":
     bill = 15
@@ -40,23 +26,12 @@ else:
 if pepperoni == "Y":
     if size == "S":
         bill += 2
-
-if pepperoni == "Y":
-    if size == "M":
+    else:
         bill += 3
 
-if pepperoni == "Y":
-    if size == "L":
-        bill += 3
 
 if extra_cheese == "Y":
     bill += 1
 
-
-print(f"Your final bill is: ${bill}.")
-
-
-    if pepperoni == "Y":
-        bill += 2
 
 print(f"Your final bill is: ${bill}.")
