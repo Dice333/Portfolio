@@ -1,0 +1,87 @@
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
+import random
+import art
+
+user_hand = random.sample(cards, 2)
+dealer_hand = random.sample(cards, 2)
+
+playing = True
+
+old_ace = 11
+new_ace = 1
+
+def blackjack(user_hand):
+    if sum(user_hand) == 21:
+        return True
+
+    if sum(user_hand) > 21 and old_ace in user_hand:
+        user_hand[user_hand.index(old_ace)] = new_ace
+
+    if sum(user_hand) > 21:
+        print("You Lose")
+        return True
+
+    return False
+#
+
+def user_draw_card():
+    while sum(user_hand) < 21:
+        pick_up = input("do you want to draw a card? yes or no").lower()
+        if pick_up== "yes":
+            user_hand.append(random.choice(cards))
+            print(f"Your cards are {user_hand}")
+
+        elif pick_up == "no":
+            return False
+
+
+def dealer_draw_card():
+    while sum(dealer_hand) < 17:
+        dealer_hand.append(random.choice(cards))
+
+def winner():
+    if sum(dealer_hand) > sum(user_hand) and sum(dealer_hand) < 21:
+        print(f"your hand is {user_hand}")
+        print(f"the dealer's hand is {dealer_hand}")
+        print("You lose")
+    elif sum(user_hand) > sum(dealer_hand) and sum(dealer_hand) <21:
+        print(f"your hand is {user_hand}")
+        print(f"the dealer's hand is {dealer_hand}")
+        print("You win")
+
+    elif sum(dealer_hand) > 21:
+        print(f"The dealer's hand is {dealer_hand}")
+        print("You win")
+
+    elif sum(user_hand) == sum(dealer_hand):
+        print("It's a draw")
+
+def game_over():
+    play_again = input("do you want to play again? Type 'yes' or 'no'").lower()
+    if play_again == "yes":
+        return False
+    elif play_again == "no":
+        return True
+
+
+
+while playing:
+    play = input("Do you want to play blackjack? Type 'y' for yes or 'n' for no.").lower()
+    if play == "y":
+        print(art.logo)
+        user_hand = random.sample(cards, 2)
+        dealer_hand = random.sample(cards, 2)
+        print(f"Your cards {user_hand}")
+        print(f"Dealer's first card {dealer_hand[0]}")
+
+        user_draw_card()
+        game_done = blackjack(user_hand)
+        if not game_done:
+            dealer_draw_card()
+            winner()
+            if game_over():
+                playing = False
+        else:
+            if game_over():
+                playing = False
