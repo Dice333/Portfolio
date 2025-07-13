@@ -1,0 +1,80 @@
+import random
+
+#intro
+print("Welcome to the number guessing game! \n"
+      "I'm thinking of a number between 1 and 100")
+
+
+#Game Difficulty
+game_mode = input("Choose a difficulty. Type 'easy' or 'hard' ").lower()
+
+
+
+#Random Number Generator
+
+pick_a_number_between_ = list(range(1, 101))
+number_answer = random.choice(pick_a_number_between_)
+print(number_answer)
+
+# Guess
+
+#Lives
+# max_lives = list(range(1, 10))
+# starting_lives = max_lives[1]
+#
+# print(starting_lives)
+
+def decrease_lives(tries, secret, lives):
+
+    if tries != secret:
+        return lives - 1
+
+easy_lives = 10
+hard_lives = 5
+
+# Hint
+def hint(attempt, answer):
+    if attempt < answer:
+        print("Too low \n Guess Again")
+
+    elif attempt > answer:
+        print("Too high \n Guess Again")
+
+#End Game
+
+playing = True
+
+def winner(any_guess, answer):
+    return any_guess == answer
+
+
+#Main
+if  game_mode == "easy":
+    starting_lives = easy_lives
+
+    while playing:
+        guess = int(input("Pick a number "))
+        hint(guess, number_answer)
+        game_done = winner(guess, number_answer)
+        if game_done:
+            playing = False
+        else:
+            starting_lives = decrease_lives(guess, number_answer, starting_lives)
+        print(f"You have {starting_lives} left ")
+
+        if starting_lives == 0:
+            playing = False
+
+if game_mode == "hard":
+    starting_lives = hard_lives
+
+    while playing:
+        guess = int(input("Pick a number "))
+        hint(guess, number_answer)
+        game_done = winner(guess, number_answer)
+        if game_done:
+            playing = False
+        else:
+            starting_lives = decrease_lives(guess, number_answer, starting_lives)
+        if starting_lives == 0:
+            playing = False
