@@ -76,5 +76,7 @@ if game_mode == "hard":
             playing = False
         else:
             starting_lives = decrease_lives(guess, number_answer, starting_lives)
+        print(f"You have {starting_lives} lives left ")
+
         if starting_lives == 0:
             playing = False
